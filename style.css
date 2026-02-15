@@ -1,0 +1,538 @@
+blockquote ul {
+    list-style: disc;
+    margin: 4px 40px;
+}
+
+blockquote ol {
+    list-style: decimal;
+    margin: 4px 40px;
+}
+
+.block.padded.ch_box {
+    padding: 10px !important;
+    border: 1px solid var(--border-color-primary) !important;
+    border-radius: 8px !important;
+    margin-bottom: 10px;
+    background: var(--background-fill-primary);
+}
+
+.block.padded.ch_vpadding {
+    padding: 10px 0 !important;
+}
+
+#tab_civitai_helper .ch_vmargin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#tab_civitai_helper .extra-network-cards {
+    min-height: 0;
+    max-height: 50vh;
+}
+
+.card-button {
+    margin: 0px 2px;
+    padding: 2px;
+    font-size: 150%;
+}
+
+#tab_civitai_helper .justify-bottom {
+    justify-content: flex-end;
+}
+
+#tab_civitai_helper .ch_grid div {
+    flex-basis: 30%;
+}
+
+#tab_civitai_helper .flex-center {
+    justify-content: center;
+    align-content: center;
+}
+
+@media only screen and (min-width: 600px) {
+    #ch_dl_preview_img {
+        width: 100%;
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+    }
+}
+
+/* SD WebUI has not line height limit for model names.
+ * This can result in the model name filling the entire card,
+ * hiding our buttons. This is honestly a WebUI issue more
+ * than an issue on this end, but we can fix it anyways, so
+ * why not?
+ */
+.extra-network-cards .card .name:not(:hover) {
+    display: block;
+    overflow: hidden;
+    max-height: 3em;
+}
+
+.extra-network-thumbs .card-button {
+    font-size: 100%;
+    display: inline;
+    position: static;
+    background-image: none;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.duplicate_model {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#ch_path_el {
+    position: fixed;
+    border: var(--input-border-width) solid var(--input-border-color);
+    border-radius: var(--input-radius);
+    background: var(--input-background-fill);
+    padding: var(--input-padding);
+    color: var(--body-text-color);
+    font-weight: var(--input-text-weight);
+    font-size: var(--input-text-size);
+    line-height: var(--line-sm);
+    box-shadow: var(--input-shadow);
+    font-family: var(--font);
+    pointer-events: none;
+}
+
+/* Lobe theme */
+.actions .additional>a {
+    display: none;
+}
+
+/*
+ * Gross, ugly, and I hate it, but the only way to override an
+ * !important is with a more granular !important.
+ */
+.acss-culdhq .extra-networks .actions .additional>ul a.card-button {
+    margin: 0px 2px !important;
+    padding: 2px !important;
+    font-size: 150% !important;
+}
+
+/* Work around a display bug in Lobe that causes lowers opacity to 0.2 */
+#txt2img_extra_tabs [style*="_cards_html"] .pending,
+#img2img_extra_tabs [style*="_cards_html"] .pending {
+    opacity: 1;
+}
+
+/* Work around a display bug in Lobe that causes an infinite counter */
+#txt2img_extra_tabs [id*="_cards_html"] .progress-text,
+#img2img_extra_tabs [id*="_cards_html"] .progress-text {
+    display: none;
+}
+
+/* end of Lobe theme */
+
+/* Civitai Helper Browser */
+/* Perhaps figure out a less hacky way to write this... */
+#ch_search {
+    overflow: scroll;
+    max-height: 85vh;
+    /* maybe try to figure out a way to fill the whole screen unless it's under a certain resolution? */
+}
+
+#ch_search .cards_container {
+    grid-template-columns: 340px;
+}
+
+@media screen and (min-width: 800px) {
+    #ch_search .cards_container {
+        grid-template-columns: 340px 340px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #ch_search .cards_container {
+        grid-template-columns: 340px 340px 340px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    #ch_search .cards_container {
+        grid-template-columns: 340px 340px 340px 340px;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    #ch_search .cards_container {
+        grid-template-columns: 340px 340px 340px 340px 340px;
+    }
+}
+
+@media screen and (min-width: 2400px) {
+    #ch_search .cards_container {
+        grid-template-columns: 340px 340px 340px 340px 340px 340px;
+    }
+}
+
+@media screen and (min-width: 2800px) {
+    #ch_search .cards_container {
+        grid-template-columns: 340px 340px 340px 340px 340px 340px 340px;
+    }
+}
+
+@media screen and (min-width: 3200px) {
+    #ch_search .cards_container {
+        grid-template-columns: 340px 340px 340px 340px 340px 340px 340px 340px;
+    }
+}
+
+@media screen and (min-width: 3800px) {
+    #ch_search .cards_container {
+        grid-template-columns: 340px 340px 340px 340px 340px 340px 340px 340px 340px;
+    }
+}
+
+@media screen and (min-width: 4200px) {
+    #ch_search .cards_container {
+        grid-template-columns: 340px 340px 340px 340px 340px 340px 340px 340px 340px 340px;
+    }
+}
+
+#ch_scan_dup_model_log_md {
+    overflow: auto !important;
+    min-height: 100px;
+    padding: 10px;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+#ch_scan_dup_model_log_md img {
+    max-width: 25vw;
+}
+
+#ch_check_models_new_version_log_md {
+    min-height: 4em;
+    padding: 10px 10px 20px 10px;
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+#ch_search {
+    & .cards_container {
+        display: grid;
+        grid-template-rows: auto;
+        margin: 10px auto;
+        gap: 20px;
+        width: fit-content;
+    }
+
+    & .body_container {
+        display: block;
+    }
+
+    & .desktop .search_container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+    & .search_container {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    & .model_card {
+        position: relative;
+        text-align: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid black;
+        margin: 10px;
+        font-size: 3em;
+    }
+
+    & .description {
+        transition: height ease-in-out .3s;
+        overflow: hidden;
+        width: 320px;
+        height: 0px;
+        box-sizing: border-box;
+        pointer-events: none;
+        position: absolute;
+        background-color: #000;
+        font-size: 12pt;
+        z-index: 10;
+        left: 0px;
+    }
+
+    & div:hover>.description {
+        height: 480px;
+        overflow-y: scroll;
+    }
+
+    & .description .text {
+        padding: 10px;
+        width: 320px;
+        overflow: hidden;
+    }
+
+    & .error {
+        margin: 3em;
+    }
+
+    & .preview {
+        width: 320px;
+        height: 480px;
+        overflow: hidden;
+        float: left;
+        position: relative;
+    }
+
+    & .preview_container {
+        width: 320px;
+        height: 480px;
+        position: relative;
+    }
+
+    & .preview_container img,
+    .preview_container video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    & .title {
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        background-color: rgba(0, 0, 0, .5);
+        font-size: 20pt;
+        width: 100%;
+        max-height: 3em;
+        overflow: hidden;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    & .ux {
+        position: absolute;
+        top: 0;
+        right: 0;
+        box-sizing: border-box;
+        text-shadow: 2px 2px 6px #000;
+        z-index: 11;
+        padding: 5px;
+    }
+
+    & .model_meta {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        box-sizing: border-box;
+        text-shadow: 2px 2px 6px #000;
+        font-weight: bold;
+        font-size: 16pt;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 8;
+        padding: 5px;
+        vertical-align: top;
+        pointer-events: none;
+    }
+
+    & .model_base {
+        font-family: monospace;
+        font-size: 50%;
+        vertical-align: super;
+        line-height: normal;
+    }
+
+    /*
+    html {
+        background-color: #0b0f19;
+        color: #fff;
+    }
+    body {
+        font-family: sans-serif;
+        text-align: center;
+    }
+    body.desktop {
+        padding-top: 3.6em;
+    }
+    */
+    & a {
+        /* color: #ddd; */
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    & .ux a {
+        display: block;
+        float: right;
+        font-size: 18pt;
+        height: 1.5em;
+        width: 1.5em;
+    }
+
+    & span.button {
+        cursor: pointer;
+        display: inline-block;
+        background-color: #111;
+        border-radius: 3px;
+        border: #4568E6 solid 1px;
+        padding: 1px 4px;
+        margin: 1px 3px;
+        color: #000;
+        background-color: #99aaff;
+        opacity: 0.75;
+    }
+
+    & input:checked+span.button {
+        background-color: #3457D5;
+        color: #fff;
+        font-weight: bold;
+        opacity: 1;
+    }
+
+    & label.checkbox input[type=checkbox] {
+        display: none;
+    }
+
+    & .ch_active_card {
+        outline: 2px gold solid;
+    }
+}
+
+/* End of Civitai Helper Browser */
+
+/* Update Cards */
+.ch-update-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+.ch-update-card {
+    display: flex;
+    flex-direction: row;
+    background: var(--background-fill-secondary);
+    border: 1px solid var(--border-color-primary);
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 320px;
+    height: auto;
+    position: relative;
+    width: 100%;
+}
+
+.ch-update-card-media {
+    width: 300px;
+    min-width: 300px;
+    height: auto;
+    min-height: 320px;
+    background-color: #000;
+    position: relative;
+    border-right: 1px solid var(--border-color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ch-update-card-thumb,
+.ch-update-card-video {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    background-color: #000;
+    display: block;
+    position: static;
+}
+
+@media (max-width: 768px) {
+    .ch-update-card {
+        flex-direction: column;
+    }
+
+    .ch-update-card-media {
+        width: 100%;
+        min-width: 100%;
+        height: 300px;
+        min-height: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color-primary);
+    }
+
+    .ch-update-card-thumb,
+    .ch-update-card-video {
+        position: relative;
+    }
+}
+
+.ch-update-card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+.ch-update-card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ch-update-card-version {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ch-update-card-desc {
+    font-size: 0.9em;
+    overflow-y: auto;
+    flex: 1;
+    margin-bottom: 10px;
+    padding-right: 5px;
+    background: var(--background-fill-primary);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.ch-update-card-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.ch-update-btn {
+    padding: 8px 16px;
+    background: var(--button-primary-background-fill);
+    color: var(--button-primary-text-color);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+}
+
+.ch-update-btn:hover {
+    background: var(--button-primary-background-fill-hover);
+}
