@@ -341,7 +341,7 @@ def download_section():
             gr.Textbox(
                 value=preview
             ),
-            gr.Checkbox(
+            gr.Row(
                 visible=(state["files_count"][dl_version] > 1)
             ),
             gr.Textbox(
@@ -368,7 +368,7 @@ def download_section():
                 value=preview_url
             )
 
-        return gr.Checkbox(
+        return gr.Textbox(
             value=preview_url
         )
 

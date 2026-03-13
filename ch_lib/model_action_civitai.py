@@ -311,16 +311,8 @@ def build_article_from_version(version):
 
 
 def check_models_new_version_to_md(model_types:list, progress=gr.Progress()) -> str:
-    generator = civitai.check_models_new_version_by_model_types(model_types, 0.2, progress)
-    
-    new_versions = []
-    while True:
-        try:
-            msg = next(generator)
-            yield msg
-        except StopIteration as e:
-            new_versions = e.value
-            break
+    yield "Searching for new versions..."
+    new_versions = civitai.check_models_new_version_by_model_types(model_types, 0.2, progress)
 
     if not new_versions:
         util.printD("Done: no new versions found.")
@@ -487,10 +479,12 @@ def parse_file_info(file_info, basename):
     if download_url is None:
         return None
 
-    filetype = file_info["type"]
-    filename = file_info["name"]
-    if basename and not filetype == "VAE":
-        filename = f"{basename}.{filename.split('.')[-1]}"
+    filetype = file_info.get("type", "Model")
+    filename = file_info.get("name", "")
+
+    if basename and filetype != "VAE":
+        # basename already includes extension (e.g. "mymodel.safetensors")
+        filename = basename
 
     return {
         "url": download_url,
@@ -713,8 +707,14 @@ def dl_model_by_input(
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"
 
+    # Combine the user-provided filename with the file extension
+    if filename and file_ext:
+        full_filename = f"{filename}.{file_ext}"
+    else:
+        full_filename = filename
+
     additional = None
-    for result in download_files(filename, folder, ver_info, headers, filetypes, dl_all, duplicate):
+    for result in download_files(full_filename, folder, ver_info, headers, filetypes, dl_all, duplicate):
         if not isinstance(result, str):
             if len(result) > 2:
                 success, output, additional = result
